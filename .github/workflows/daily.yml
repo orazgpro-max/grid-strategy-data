@@ -1,0 +1,33 @@
+name: Daily public coin data
+on:
+  schedule:
+    - cron: '17 1 * * *'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: daily-public-data
+  cancel-in-progress: false
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09
+      - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444
+        with:
+          node-version: '24'
+      - name: Collect and validate public observations
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          COINGECKO_DEMO_API_KEY: ${{ secrets.COINGECKO_DEMO_API_KEY }}
+        run: node run.mjs
+      - name: Save snapshot
+        run: |
+          git config user.name 'coin-data-updater'
+          git config user.email 'coin-data-updater@users.noreply.github.com'
+          git add -- daily.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'Update daily public coin observations'
+            git push
+          fi
