@@ -74,6 +74,33 @@ function parseFilters(info) {
   };
 }
 
+/** Validate a closed historical aggregate without changing its original scan date. */
+export function validateHistoryCache(cache, symbol, endTime) {
+  try {
+    if (!cache || cache.version !== 2 || cache.symbol !== symbol || !Number.isSafeInteger(cache.throughOpen) || cache.throughOpen % DAY !== 0 || cache.throughOpen >= Math.floor(endTime / DAY) * DAY || !Number.isSafeInteger(cache.historyStart) || cache.historyStart < 0 || cache.historyStart > cache.throughOpen || !Number.isInteger(cache.candles) || cache.candles < 1 || !Number.isInteger(cache.gaps) || cache.gaps < 0 || !Number.isFinite(cache.fullScanAt) || cache.fullScanAt > endTime || endTime - cache.fullScanAt > CACHE_AGE || !Array.isArray(cache.last) || cache.last[0] !== cache.throughOpen) return null;
+    const first = parseCandle(cache.firstDay, endTime);
+    if (!first.trades || first.open < cache.historyStart || first.open > cache.throughOpen) return null;
+    // ath in the cache intentionally covers ONLY days after the listing day.
+    // An unrefined first day must never enter this closed historical maximum.
+    if (cache.ath === 0 ? cache.athTime !== null : !positive(cache.ath) || !Number.isSafeInteger(cache.athTime) || cache.athTime <= first.open || cache.athTime > cache.throughOpen || cache.athTime % DAY !== 0) return null;
+    const c = cache.listingCorrection;
+    if (c !== null && (!c || !Number.isFinite(c.high) || c.high < 0 || c.high > first.high || c.interval !== '1m' || !Number.isSafeInteger(c.openTime) || c.openTime % MINUTE !== 0 || c.openTime < first.open || c.openTime > first.closeTime || c.closeTime !== c.openTime + MINUTE - 1 || !Array.isArray(c.sources) || c.sources.length !== 2 || !c.sources.every(s => typeof s === 'string' && s.startsWith('https://')))) return null;
+    if (cache.last.length !== 8 || !cache.last.every(Number.isFinite) || cache.last.slice(1,5).some(v=>v<=0) || cache.last[2] < Math.max(...cache.last.slice(1,5)) || cache.last[3] > Math.min(...cache.last.slice(1,5)) || cache.last[5]<0 || !Number.isSafeInteger(cache.last[6]) || cache.last[6]<0 || (cache.last[5]>0)!==(cache.last[6]>0) || !Number.isSafeInteger(cache.last[7]) || cache.last[7]<cache.throughOpen || cache.last[7]>=cache.throughOpen+DAY) return null;
+    return cache;
+  } catch { return null; }
+}
+function parseCandle(row, endTime, duration = DAY) {
+  if (!Array.isArray(row) || row.length < 12) throw failure('INVALID_HISTORY', 'Binance вернул неполную свечу.');
+  const open = row[0], closeTime = row[6];
+  // Historical maintenance can end a daily candle early (e.g. ETH 2018-02-08).
+  if (!Number.isSafeInteger(open) || open < 0 || open % duration !== 0 || open > endTime || !Number.isSafeInteger(closeTime) || closeTime < open || closeTime >= open + duration) throw failure('INVALID_HISTORY', 'В истории Binance неверные даты свечей.');
+  const prices = [row[1], row[2], row[3], row[4]];
+  const volume = Number(row[5]), trades = row[8];
+  if (!prices.every(positive) || Number(row[2]) < Math.max(...prices.map(Number)) || Number(row[3]) > Math.min(...prices.map(Number)) || !Number.isFinite(volume) || volume < 0 || !Number.isSafeInteger(trades) || trades < 0 || (trades > 0) !== (volume > 0)) throw failure('INVALID_HISTORY', 'В истории Binance неверные цены, объём или число сделок.');
+  return { open, closeTime, high: Number(row[2]), prices: prices.map(Number), volume, trades, raw: row,
+  fingerprint: [open, ...prices.map(Number), volume, trades, closeTime] };
+}
+
 /** DI keeps browser code free of Node dependencies. proxyUrl, when provided,
  * must be a same-origin path: /api/binance?path=/api/v3/klines&symbol=...
  * onProgress receives {stage,message,pages?,candles?,cached?}.
@@ -159,30 +186,30 @@ export function createMarketClient({ fetch: fetcher = globalThis.fetch?.bind(glo
     throw lastError;
   }
   const progress = (callback, payload) => { if (typeof callback === 'function') callback(payload); };
+  const seededHistory = new Map();
   function readCache(symbol, endTime) {
-    try {
-      const cache = JSON.parse(storage?.getItem(CACHE_PREFIX + symbol) ?? 'null');
-      if (!cache || cache.version !== 2 || cache.symbol !== symbol || !Number.isSafeInteger(cache.throughOpen) || cache.throughOpen % DAY !== 0 || cache.throughOpen >= Math.floor(endTime / DAY) * DAY || !Number.isSafeInteger(cache.historyStart) || cache.historyStart < 0 || cache.historyStart > cache.throughOpen || !Number.isInteger(cache.candles) || cache.candles < 1 || !Number.isInteger(cache.gaps) || cache.gaps < 0 || !Number.isFinite(cache.fullScanAt) || cache.fullScanAt > endTime || endTime - cache.fullScanAt > CACHE_AGE || !Array.isArray(cache.last) || cache.last[0] !== cache.throughOpen) return null;
-      const first = parseCandle(cache.firstDay, endTime);
-      if (!first.trades || first.open < cache.historyStart || first.open > cache.throughOpen) return null;
-      // ath in the cache intentionally covers ONLY days after the listing day.
-      // An unrefined first day must never enter this closed historical maximum.
-      if (cache.ath === 0 ? cache.athTime !== null : !positive(cache.ath) || !Number.isSafeInteger(cache.athTime) || cache.athTime <= first.open || cache.athTime > cache.throughOpen || cache.athTime % DAY !== 0) return null;
-      const c = cache.listingCorrection;
-      if (c !== null && (!c || !Number.isFinite(c.high) || c.high < 0 || c.high > first.high || c.interval !== '1m' || !Number.isSafeInteger(c.openTime) || c.openTime % MINUTE !== 0 || c.openTime < first.open || c.openTime > first.closeTime || c.closeTime !== c.openTime + MINUTE - 1 || !Array.isArray(c.sources) || c.sources.length !== 2 || !c.sources.every(s => typeof s === 'string' && s.startsWith('https://')))) return null;
-      return cache;
-    } catch { return null; }
+    let local=null;
+    try { local=validateHistoryCache(JSON.parse(storage?.getItem(CACHE_PREFIX+symbol)??'null'),symbol,endTime); } catch {}
+    const seeded=validateHistoryCache(seededHistory.get(symbol),symbol,endTime);
+    if (!seeded || (local && (local.throughOpen>seeded.throughOpen || (local.throughOpen===seeded.throughOpen && local.fullScanAt>=seeded.fullScanAt)))) return local;
+    return seeded;
   }
-  function parseCandle(row, endTime, duration = DAY) {
-    if (!Array.isArray(row) || row.length < 12) throw failure('INVALID_HISTORY', 'Binance вернул неполную свечу.');
-    const open = row[0], closeTime = row[6];
-    // Historical maintenance can end a daily candle early (e.g. ETH 2018-02-08).
-    if (!Number.isSafeInteger(open) || open < 0 || open % duration !== 0 || open > endTime || !Number.isSafeInteger(closeTime) || closeTime < open || closeTime >= open + duration) throw failure('INVALID_HISTORY', 'В истории Binance неверные даты свечей.');
-    const prices = [row[1], row[2], row[3], row[4]];
-    const volume = Number(row[5]), trades = row[8];
-    if (!prices.every(positive) || Number(row[2]) < Math.max(...prices.map(Number)) || Number(row[3]) > Math.min(...prices.map(Number)) || !Number.isFinite(volume) || volume < 0 || !Number.isSafeInteger(trades) || trades < 0 || (trades > 0) !== (volume > 0)) throw failure('INVALID_HISTORY', 'В истории Binance неверные цены, объём или число сделок.');
-    return { open, closeTime, high: Number(row[2]), prices: prices.map(Number), volume, trades, raw: row,
-      fingerprint: [open, ...prices.map(Number), volume, trades, closeTime] };
+  function seedHistoryCaches(snapshot) {
+    const time=now(),generated=Date.parse(snapshot?.generatedAt);
+    if(snapshot?.version!==1 || !Number.isFinite(generated) || generated>time || time-generated>36*HOUR || !snapshot.coins || typeof snapshot.coins!=='object' || Array.isArray(snapshot.coins))return 0;
+    const entries=Object.entries(snapshot.coins);if(entries.length>2000)return 0;
+    let count=0;
+    for(const [symbol,row] of entries){
+      try { if(normalizeSymbol(symbol)!==symbol)continue; } catch { continue; }
+      const fetched=Date.parse(row?.fetchedAt);
+      if(row?.status!=='ok' || !Number.isFinite(fetched) || fetched>generated || time-fetched>36*HOUR)continue;
+      const value=validateHistoryCache(row.historyCache,symbol,time);if(!value)continue;
+      const current=readCache(symbol,time);
+      if(current && (current.throughOpen>value.throughOpen || (current.throughOpen===value.throughOpen && current.fullScanAt>=value.fullScanAt)))continue;
+      const copy=JSON.parse(JSON.stringify(value));seededHistory.set(symbol,copy);count++;
+      try { storage?.setItem(CACHE_PREFIX+symbol,JSON.stringify(copy)); } catch {}
+    }
+    return count;
   }
   async function listingChildren(symbol, parent, interval, duration, ctx) {
     const result = await request('/api/v3/klines', { symbol, interval, timeZone: '0', startTime: String(parent.open), endTime: String(Math.min(parent.closeTime, ctx.endTime)), limit: '1000' }, ctx);
@@ -308,10 +335,14 @@ export function createMarketClient({ fetch: fetcher = globalThis.fetch?.bind(glo
    * Missing sides yield null spread. No liquidity thresholds or ATH requests.
    * Binance documents batch symbols for both endpoints; groups of 20 keep
    * ticker/24hr request weight at 2 rather than 40 for 21-100 symbols.
+   * Omit inputSymbols to discover every currently active Spot USDT pair.
+   * An explicit empty array still does no network work.
    */
   async function loadLiquidity(inputSymbols, { signal, onProgress } = {}) {
-    if (!Array.isArray(inputSymbols) || inputSymbols.length > 1000) throw failure('INVALID_SYMBOLS', 'Передайте список не более 1000 пар к USDT.');
-    const symbols = [...new Set(inputSymbols.map(normalizeSymbol))], ctx = context(signal);
+    const discover = inputSymbols === undefined;
+    if (!discover && (!Array.isArray(inputSymbols) || inputSymbols.length > 1000)) throw failure('INVALID_SYMBOLS', 'Передайте список не более 1000 пар к USDT.');
+    let symbols = discover ? null : [...new Set(inputSymbols.map(normalizeSymbol))];
+    const ctx = context(signal);
     const result = { rows: [], unavailable: [], fetchedAt: null, sources: { exchangeInfo: null, ticker24hr: [], bookTicker: [] }, warnings: [] };
     const verifiedRows = new Map();
     const batchIndex = (data, wanted, endpoint) => {
@@ -326,7 +357,7 @@ export function createMarketClient({ fetch: fetcher = globalThis.fetch?.bind(glo
     };
     try {
       ctx.check();
-      if (symbols.length) {
+      if (discover || symbols.length) {
         progress(onProgress, { stage: 'metadata', message: 'Проверяю доступность пар Binance Spot.' });
         const metadata = await request('/api/v3/exchangeInfo', { permissions: 'SPOT', symbolStatus: 'TRADING', showPermissionSets: 'false' }, ctx, { dataOnly: true });
         const metadataFetchedAt = now();
@@ -337,6 +368,13 @@ export function createMarketClient({ fetch: fetcher = globalThis.fetch?.bind(glo
           symbolInfo(row);
           if (catalog.has(row.symbol) || typeof row.status !== 'string' || typeof row.isSpotTradingAllowed !== 'boolean') throw failure('INVALID_RESPONSE', 'Каталог Binance содержит повтор или неполный статус пары.');
           catalog.set(row.symbol, row);
+        }
+        if (discover) {
+          symbols = [...catalog.values()].filter(active).map(row => {
+            if (row.symbol !== row.baseAsset + row.quoteAsset || normalizeSymbol(row.symbol) !== row.symbol) throw failure('INVALID_RESPONSE', 'Тикер Binance не совпал с описанием пары.');
+            return row.symbol;
+          });
+          if (!symbols.length) throw failure('INVALID_RESPONSE', 'Каталог активных спотовых пар Binance пуст. Повтори обновление.');
         }
         const available = [];
         for (const symbol of symbols) {
@@ -406,6 +444,7 @@ export function createMarketClient({ fetch: fetcher = globalThis.fetch?.bind(glo
       ctx.check();
       const warnings = [...daily.warnings];
       if (daily.cache) {
+        seededHistory.set(symbol, JSON.parse(JSON.stringify(daily.cache)));
         try { storage?.setItem(CACHE_PREFIX + symbol, JSON.stringify(daily.cache)); }
         catch { warnings.push('Исторический кэш не сохранён; при следующем обновлении история будет загружена заново.'); }
       }
@@ -431,6 +470,7 @@ export function createMarketClient({ fetch: fetcher = globalThis.fetch?.bind(glo
       ctx.check();
       const warnings = [...daily.warnings, ...ref.warnings];
       if (daily.cache) {
+        seededHistory.set(symbol, JSON.parse(JSON.stringify(daily.cache)));
         try { storage?.setItem(CACHE_PREFIX + symbol, JSON.stringify(daily.cache)); }
         catch { warnings.push('Исторический кэш не сохранён; при следующем обновлении история будет загружена заново.'); }
       }
@@ -444,7 +484,7 @@ export function createMarketClient({ fetch: fetcher = globalThis.fetch?.bind(glo
     } catch (error) { ctx.cancel(); throw error; }
     finally { ctx.close(); }
   }
-  return { loadCatalog, loadMarket, loadPriceScale, loadLiquidity };
+  return { loadCatalog, loadMarket, loadPriceScale, loadLiquidity, seedHistoryCaches };
 }
 let defaultClient;
 const client = () => (defaultClient ??= createMarketClient());
@@ -452,3 +492,5 @@ export const loadCatalog = options => client().loadCatalog(options);
 export const loadMarket = (symbol, options) => client().loadMarket(symbol, options);
 export const loadPriceScale = (symbol, options) => client().loadPriceScale(symbol, options);
 export const loadLiquidity = (symbols, options) => client().loadLiquidity(symbols, options);
+
+export const seedHistoryCaches = snapshot => client().seedHistoryCaches(snapshot);
