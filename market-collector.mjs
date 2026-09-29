@@ -1,9 +1,9 @@
 /** Daily public-only collector, also used by the standalone GitHub job. */
-import {createMarketClient, validateHistoryCache} from './market.mjs';
+import {createMarketClient, validateHistoryCache, HISTORY_CACHE_PREFIX} from './market.mjs';
 import {validateMarketSnapshot} from './market-snapshot.mjs';
 
 const DAY = 86400000;
-const PREFIX = 'grid-binance-daily-v2:';
+const PREFIX = HISTORY_CACHE_PREFIX;
 const iso = value => new Date(value).toISOString();
 const error = (code, message) => Object.assign(new Error(message), {code});
 

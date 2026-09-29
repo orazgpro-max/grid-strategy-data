@@ -1,6 +1,6 @@
 /** Public, unsigned Binance Spot data. No account or trading endpoints.
- * ATH excludes the first traded 1m candle of this Binance pair. The rest of
- * the first day is retained. This is not a worldwide asset ATH. Migrations are not
+ * The calculated maximum excludes the first traded minute, uses 1m bodies for
+ * the remaining first 60 minutes, then regular highs. Migrations are not
  * automatically joined or adjusted. Times in the exported record are UTC ms.
  * Sources: https://github.com/binance/binance-spot-api-docs/blob/master/rest-api.md
  * https://github.com/binance/binance-spot-api-docs/blob/master/filters.md
@@ -12,10 +12,13 @@ const MINUTE = 60000;
 const PRIMARY = 'https://api.binance.com';
 const FALLBACK = 'https://data-api.binance.vision';
 const PATHS = new Set(['/api/v3/exchangeInfo', '/api/v3/ticker/price', '/api/v3/ticker/24hr', '/api/v3/ticker/bookTicker', '/api/v3/klines', '/api/v3/referencePrice', '/api/v3/avgPrice']);
-const CACHE_PREFIX = 'grid-binance-daily-v2:';
+export const HISTORY_CACHE_PREFIX = 'grid-binance-daily-v3:';
+export const ATH_POLICY = 'listing-first-minute-excluded-next-59m-bodies-v1';
+const CACHE_PREFIX = HISTORY_CACHE_PREFIX;
+const LEGACY_CACHE_PREFIX = 'grid-binance-daily-v2:';
 const CACHE_AGE = 30 * DAY;
 const LIQUIDITY_REUSE_AGE = 60000;
-export const ATH_SCOPE = 'Максимум истории пары Binance (USDT) без первой минутной свечи листинга, не мировой максимум монеты';
+export const ATH_SCOPE = 'Расчётный максимум пары Binance (USDT): без первой минуты; до истечения 60 минут от начала торгов — по телам минутных свечей, далее — по обычным максимумам. Не мировой максимум монеты';
 
 export class MarketDataError extends Error {
   constructor(code, message, details = {}) { super(message); this.name = 'MarketDataError'; this.code = code; Object.assign(this, details); }
@@ -77,15 +80,21 @@ function parseFilters(info) {
 /** Validate a closed historical aggregate without changing its original scan date. */
 export function validateHistoryCache(cache, symbol, endTime) {
   try {
-    if (!cache || cache.version !== 2 || cache.symbol !== symbol || !Number.isSafeInteger(cache.throughOpen) || cache.throughOpen % DAY !== 0 || cache.throughOpen >= Math.floor(endTime / DAY) * DAY || !Number.isSafeInteger(cache.historyStart) || cache.historyStart < 0 || cache.historyStart > cache.throughOpen || !Number.isInteger(cache.candles) || cache.candles < 1 || !Number.isInteger(cache.gaps) || cache.gaps < 0 || !Number.isFinite(cache.fullScanAt) || cache.fullScanAt > endTime || endTime - cache.fullScanAt > CACHE_AGE || !Array.isArray(cache.last) || cache.last[0] !== cache.throughOpen) return null;
+    if (!cache || ![2, 3].includes(cache.version) || cache.version === 3 && cache.policy !== ATH_POLICY || cache.symbol !== symbol || !Number.isSafeInteger(cache.throughOpen) || cache.throughOpen % DAY !== 0 || cache.throughOpen >= Math.floor(endTime / DAY) * DAY || !Number.isSafeInteger(cache.historyStart) || cache.historyStart < 0 || cache.historyStart > cache.throughOpen || !Number.isInteger(cache.candles) || cache.candles < 1 || !Number.isInteger(cache.gaps) || cache.gaps < 0 || !Number.isFinite(cache.fullScanAt) || cache.fullScanAt > endTime || endTime - cache.fullScanAt > CACHE_AGE || !Array.isArray(cache.last) || cache.last[0] !== cache.throughOpen) return null;
     const first = parseCandle(cache.firstDay, endTime);
     if (!first.trades || first.open < cache.historyStart || first.open > cache.throughOpen) return null;
     // ath in the cache intentionally covers ONLY days after the listing day.
     // An unrefined first day must never enter this closed historical maximum.
     if (cache.ath === 0 ? cache.athTime !== null : !positive(cache.ath) || !Number.isSafeInteger(cache.athTime) || cache.athTime <= first.open || cache.athTime > cache.throughOpen || cache.athTime % DAY !== 0) return null;
     const c = cache.listingCorrection;
-    if (c !== null && (!c || !Number.isFinite(c.high) || c.high < 0 || c.high > first.high || c.interval !== '1m' || !Number.isSafeInteger(c.openTime) || c.openTime % MINUTE !== 0 || c.openTime < first.open || c.openTime > first.closeTime || c.closeTime !== c.openTime + MINUTE - 1 || !Array.isArray(c.sources) || c.sources.length !== 2 || !c.sources.every(s => typeof s === 'string' && s.startsWith('https://')))) return null;
+    if (c !== null && (!c || !Number.isFinite(c.high) || c.high < 0 || c.high > first.high || c.interval !== '1m' || !Number.isSafeInteger(c.openTime) || c.openTime % MINUTE !== 0 || c.openTime < first.open || c.openTime > first.closeTime || c.closeTime !== c.openTime + MINUTE - 1 || !Array.isArray(c.sources) || c.sources.length < 2 || c.sources.length > (cache.version === 2 ? 2 : 3) || !c.sources.every(s => typeof s === 'string' && s.startsWith('https://')) || cache.version === 3 && c.windowEnd !== c.openTime + HOUR)) return null;
     if (cache.last.length !== 8 || !cache.last.every(Number.isFinite) || cache.last.slice(1,5).some(v=>v<=0) || cache.last[2] < Math.max(...cache.last.slice(1,5)) || cache.last[3] > Math.min(...cache.last.slice(1,5)) || cache.last[5]<0 || !Number.isSafeInteger(cache.last[6]) || cache.last[6]<0 || (cache.last[5]>0)!==(cache.last[6]>0) || !Number.isSafeInteger(cache.last[7]) || cache.last[7]<cache.throughOpen || cache.last[7]>=cache.throughOpen+DAY) return null;
+    // Legacy ath excludes the first UTC day already. Keep that aggregate and
+    // its original scan date, but require the new first-hour rule to be checked
+    // before use (a window crossing midnight can also affect the second day).
+    if (cache.version === 2) return {version: 3, policy: ATH_POLICY, symbol: cache.symbol, ath: cache.ath, athTime: cache.athTime,
+      firstDay: [...cache.firstDay], listingCorrection: null, historyStart: cache.historyStart, throughOpen: cache.throughOpen,
+      last: [...cache.last], candles: cache.candles, gaps: cache.gaps, fullScanAt: cache.fullScanAt};
     return cache;
   } catch { return null; }
 }
@@ -187,12 +196,19 @@ export function createMarketClient({ fetch: fetcher = globalThis.fetch?.bind(glo
   }
   const progress = (callback, payload) => { if (typeof callback === 'function') callback(payload); };
   const seededHistory = new Map();
+  function preferredCache(a, b) {
+    if (!a) return b;
+    if (!b) return a;
+    // A newer legacy snapshot must not erase a completed policy correction.
+    if (Boolean(a.listingCorrection) !== Boolean(b.listingCorrection)) return a.listingCorrection ? a : b;
+    return a.throughOpen > b.throughOpen || a.throughOpen === b.throughOpen && a.fullScanAt >= b.fullScanAt ? a : b;
+  }
   function readCache(symbol, endTime) {
     let local=null;
     try { local=validateHistoryCache(JSON.parse(storage?.getItem(CACHE_PREFIX+symbol)??'null'),symbol,endTime); } catch {}
+    if (!local) try { local=validateHistoryCache(JSON.parse(storage?.getItem(LEGACY_CACHE_PREFIX+symbol)??'null'),symbol,endTime); } catch {}
     const seeded=validateHistoryCache(seededHistory.get(symbol),symbol,endTime);
-    if (!seeded || (local && (local.throughOpen>seeded.throughOpen || (local.throughOpen===seeded.throughOpen && local.fullScanAt>=seeded.fullScanAt)))) return local;
-    return seeded;
+    return preferredCache(local,seeded);
   }
   function seedHistoryCaches(snapshot) {
     const time=now(),generated=Date.parse(snapshot?.generatedAt);
@@ -205,7 +221,7 @@ export function createMarketClient({ fetch: fetcher = globalThis.fetch?.bind(glo
       if(row?.status!=='ok' || !Number.isFinite(fetched) || fetched>generated || time-fetched>36*HOUR)continue;
       const value=validateHistoryCache(row.historyCache,symbol,time);if(!value)continue;
       const current=readCache(symbol,time);
-      if(current && (current.throughOpen>value.throughOpen || (current.throughOpen===value.throughOpen && current.fullScanAt>=value.fullScanAt)))continue;
+      if(current && preferredCache(current,value)===current)continue;
       const copy=JSON.parse(JSON.stringify(value));seededHistory.set(symbol,copy);count++;
       try { storage?.setItem(CACHE_PREFIX+symbol,JSON.stringify(copy)); } catch {}
     }
@@ -224,12 +240,21 @@ export function createMarketClient({ fetch: fetcher = globalThis.fetch?.bind(glo
     if (!traded.length || trades !== parent.trades || prices.some((p, i) => p !== parent.prices[i]) || Math.abs(volume - parent.volume) > Math.max(volume, parent.volume) * 1e-8) throw failure('INCONSISTENT_LISTING', 'Подробная история листинга не совпала с дневной. Повторите обновление; непроверенный максимум не применён.');
     return { rows: traded, source: result.source };
   }
-  async function correctListingDay(symbol, first, ctx) {
-    const hours = await listingChildren(symbol, first, '1h', HOUR, ctx);
-    const minutes = await listingChildren(symbol, hours.rows[0], '1m', MINUTE, ctx);
-    const excluded = minutes.rows[0];
-    return { high: Math.max(0, ...hours.rows.slice(1).map(r => r.high), ...minutes.rows.slice(1).map(r => r.high)),
-      interval: '1m', openTime: excluded.open, closeTime: excluded.open + MINUTE - 1, sources: [hours.source, minutes.source] };
+  async function correctListingDay(symbol, day, ctx, firstMinute = null) {
+    const hours = await listingChildren(symbol, day, '1h', HOUR, ctx);
+    const sources = [hours.source]; let high = 0;
+    for (const hour of hours.rows) {
+      if (firstMinute !== null && hour.open >= firstMinute + HOUR) { high = Math.max(high, hour.high); continue; }
+      // The actual first trade can be 10:04: its window ends at 11:04, so both
+      // intersected UTC hours need minute detail, including the unmodified tail.
+      const minutes = await listingChildren(symbol, hour, '1m', MINUTE, ctx); sources.push(minutes.source);
+      if (firstMinute === null) firstMinute = minutes.rows[0].open;
+      for (const minute of minutes.rows) {
+        if (minute.open === firstMinute) continue;
+        high = Math.max(high, minute.open < firstMinute + HOUR ? Math.max(minute.prices[0], minute.prices[3]) : minute.high);
+      }
+    }
+    return {high, interval: '1m', openTime: firstMinute, closeTime: firstMinute + MINUTE - 1, windowEnd: firstMinute + HOUR, sources};
   }
   async function history(symbol, ctx, onProgress, forceRefresh) {
     let cache = forceRefresh ? null : readCache(symbol, ctx.endTime);
@@ -237,8 +262,24 @@ export function createMarketClient({ fetch: fetcher = globalThis.fetch?.bind(glo
     for (;;) {
       const today = Math.floor(ctx.endTime / DAY) * DAY;
       let cursor = cache?.throughOpen ?? 0, lastOpen = cache?.throughOpen ?? null;
-      let state = cache ? { ...cache } : { version: 2, symbol, ath: 0, athTime: null, firstDay: null, listingCorrection: null, historyStart: null, candles: 0, gaps: 0, fullScanAt: ctx.endTime };
+      let state = cache ? { ...cache } : { version: 3, policy: ATH_POLICY, symbol, ath: 0, athTime: null, firstDay: null, listingCorrection: null, historyStart: null, candles: 0, gaps: 0, fullScanAt: ctx.endTime };
       let closedState = cache ? { ...cache } : null, source = null, reload = false;
+      if (cache && !state.listingCorrection) {
+        const first = parseCandle(state.firstDay, ctx.endTime);
+        try { state.listingCorrection = await correctListingDay(symbol, first, ctx); }
+        catch (error) {
+          if (error.code === 'INCONSISTENT_LISTING' && retriesFromZero++ === 0) { cache = null; continue; }
+          throw error;
+        }
+        if (state.listingCorrection.windowEnd > first.open + DAY) {
+          // The v2 aggregate may contain the second day's unmodified wick.
+          // It cannot be subtracted from a maximum: rebuild this pair once.
+          cache = null;
+          progress(onProgress, {stage: 'history', message: 'Проверяю историю с новым правилом стартового часа.'});
+          continue;
+        }
+        closedState.listingCorrection = state.listingCorrection;
+      }
       let received = 0;
       for (let page = 1; page <= maxPages; page++) {
         const result = await request('/api/v3/klines', { symbol, interval: '1d', timeZone: '0', startTime: String(cursor), endTime: String(ctx.endTime), limit: '1000' }, ctx);
@@ -254,31 +295,34 @@ export function createMarketClient({ fetch: fetcher = globalThis.fetch?.bind(glo
           if (lastOpen !== null && row.open <= lastOpen) throw failure('INVALID_HISTORY', 'Страницы истории Binance повторяются.');
           if (lastOpen !== null && row.open > lastOpen + DAY) state.gaps += (row.open - lastOpen) / DAY - 1;
           if (state.historyStart === null) state.historyStart = row.open;
-          if (row.trades && !state.firstDay) state.firstDay = row.raw;
-          else if (row.trades && row.high > state.ath) { state.ath = row.high; state.athTime = row.open; }
+          try {
+            if (row.trades && !state.firstDay) {
+              state.firstDay = row.raw;
+              progress(onProgress, {stage: 'history', message: 'Проверяю тела минутных свечей стартового часа.'});
+              state.listingCorrection = await correctListingDay(symbol, row, ctx);
+            } else if (row.trades) {
+              const correction = state.listingCorrection;
+              const high = correction && row.open < correction.windowEnd
+                ? (await correctListingDay(symbol, row, ctx, correction.openTime)).high : row.high;
+              if (high > state.ath) { state.ath = high; state.athTime = row.open; }
+            }
+          } catch (error) {
+            if (error.code === 'INCONSISTENT_LISTING' && row.open === today && retriesFromZero === 0) { reload = true; break; }
+            throw error;
+          }
           state.candles++; received++; lastOpen = row.open;
           if (row.open < today) closedState = { ...state, throughOpen: row.open, last: row.fingerprint };
         }
+        if (reload) break;
         progress(onProgress, { stage: 'history', message: `Загружена история: ${state.candles} дневных свечей.`, pages: page, candles: state.candles, cached: Boolean(cache) });
         if (lastOpen === today && state.candles > 0 && received > 0) {
           const warnings = state.gaps ? [`В доступной истории пары ${state.gaps} пропущенных дней. Максимум рассчитан только по возвращённым Binance свечам; история листингов и миграций не объединяется.`] : [];
           if (!state.firstDay) throw failure('INCOMPLETE_HISTORY', 'В истории пары нет сделок для расчёта максимума.');
           const first = parseCandle(state.firstDay, ctx.endTime);
-          // A later high >= the entire listing day proves the exclusion cannot
-          // change ATH. Defer refinement, retaining the raw day separately.
-          if (first.high > state.ath && !state.listingCorrection) {
-            progress(onProgress, { stage: 'history', message: 'Проверяю максимум без первой минутной свечи листинга.' });
-            try { state.listingCorrection = await correctListingDay(symbol, first, ctx); }
-            catch (error) {
-              if (error.code === 'INCONSISTENT_LISTING' && first.open === today && retriesFromZero === 0) { reload = true; break; }
-              throw error;
-            }
-            if (closedState) closedState.listingCorrection = state.listingCorrection;
-          }
           const corrected = state.listingCorrection?.high ?? 0;
           const ath = Math.max(state.ath, corrected), athTime = corrected > state.ath ? first.open : state.athTime;
-          if (!positive(ath)) throw failure('INCOMPLETE_HISTORY', 'После первой минутной свечи ещё нет сделок для расчёта максимума.');
-          const listingExclusion = state.listingCorrection ? { ...state.listingCorrection } : { interval: '1m', notNeeded: true };
+          if (!positive(ath)) throw failure('INCOMPLETE_HISTORY', 'После первой минутной свечи ещё нет сделок для расчётного максимума.');
+          const listingExclusion = { ...state.listingCorrection };
           return { ath, athTime, listingExclusion, historyStart: state.historyStart, historyThrough: ctx.endTime, source, warnings, cache: closedState?.firstDay ? closedState : null, candles: state.candles };
         }
         if (result.data.length < 1000 || lastOpen === null) throw failure('INCOMPLETE_HISTORY', 'Дневная история Binance не дошла до текущего UTC-дня. Частичный максимум не применён.');
