@@ -11,7 +11,7 @@ concurrency:
 jobs:
   collect:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09
       - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444
@@ -22,11 +22,15 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
           COINGECKO_DEMO_API_KEY: ${{ secrets.COINGECKO_DEMO_API_KEY }}
         run: node run.mjs
+      - name: Collect all Spot USDT histories and closed daily volumes
+        if: ${{ !cancelled() }}
+        run: node market-run.mjs
       - name: Save snapshot
+        if: ${{ !cancelled() }}
         run: |
           git config user.name 'coin-data-updater'
           git config user.email 'coin-data-updater@users.noreply.github.com'
-          git add -- daily.json
+          git add -- daily.json market-snapshot.json
           if ! git diff --cached --quiet; then
             git commit -m 'Update daily public coin observations'
             git push
