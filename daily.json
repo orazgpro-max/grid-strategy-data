@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-26T06:18:48.608Z",
+  "generatedAt": "2026-10-27T06:20:28.847Z",
   "coins": {
     "ETCUSDT": {
       "github": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:37.945Z",
+        "fetchedAt": "2026-10-27T06:20:05.522Z",
         "sourceAt": null,
         "source": "https://github.com/etclabscore/core-geth",
         "data": {
           "repo": "etclabscore/core-geth",
           "archived": false,
-          "pushedAt": "2026-10-21T11:36:39Z"
+          "pushedAt": "2026-10-26T14:06:10Z"
         },
         "note": ""
       },
@@ -21,13 +21,13 @@
       },
       "binance": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:36.691Z",
-        "sourceAt": "2026-10-26T06:18:23.987Z",
+        "fetchedAt": "2026-10-27T06:20:04.168Z",
+        "sourceAt": "2026-10-27T06:20:03.123Z",
         "source": "https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints",
         "data": {
           "active": true,
-          "quoteVolume24h": 1490713.2331,
-          "spread": 0.0013306719893545957,
+          "quoteVolume24h": 2148645.9922,
+          "spread": 0.0013289036544851397,
           "liquid": true,
           "monitoring": false
         },
@@ -41,13 +41,13 @@
     "BTCUSDT": {
       "github": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:38.151Z",
+        "fetchedAt": "2026-10-27T06:20:05.741Z",
         "sourceAt": null,
         "source": "https://github.com/bitcoin/bitcoin",
         "data": {
           "repo": "bitcoin/bitcoin",
           "archived": false,
-          "pushedAt": "2026-10-23T21:07:01Z"
+          "pushedAt": "2026-10-26T22:09:05Z"
         },
         "note": ""
       },
@@ -57,13 +57,13 @@
       },
       "binance": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:36.691Z",
-        "sourceAt": "2026-10-26T06:18:36.001Z",
+        "fetchedAt": "2026-10-27T06:20:04.168Z",
+        "sourceAt": "2026-10-27T06:20:04.006Z",
         "source": "https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints",
         "data": {
           "active": true,
-          "quoteVolume24h": 675834757.933155,
-          "spread": 1.2471626264223887e-7,
+          "quoteVolume24h": 1208399065.7247088,
+          "spread": 1.2530385394885146e-7,
           "liquid": true,
           "monitoring": false
         },
@@ -77,39 +77,39 @@
     "ETHUSDT": {
       "github": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:38.471Z",
+        "fetchedAt": "2026-10-27T06:20:06.060Z",
         "sourceAt": null,
         "source": "https://github.com/ethereum/go-ethereum",
         "data": {
           "repo": "ethereum/go-ethereum",
           "archived": false,
-          "pushedAt": "2026-10-23T12:29:12Z"
+          "pushedAt": "2026-10-27T03:32:48Z"
         },
         "note": "Клиент Geth; не вся разработка Ethereum."
       },
       "defillama": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:38.647Z",
+        "fetchedAt": "2026-10-27T06:20:06.755Z",
         "sourceAt": null,
         "source": "https://defillama.com/chain/ethereum",
         "data": {
           "kind": "chain",
           "slug": "Ethereum",
-          "tvl": 48399737868.479256,
-          "fees24h": 169697,
+          "tvl": 48275300608.59656,
+          "fees24h": 265445,
           "revenue24h": null
         },
         "note": " Выручка держателей не рассчитывается."
       },
       "binance": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:36.691Z",
-        "sourceAt": "2026-10-26T06:18:36.012Z",
+        "fetchedAt": "2026-10-27T06:20:04.168Z",
+        "sourceAt": "2026-10-27T06:20:04.006Z",
         "source": "https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints",
         "data": {
           "active": true,
-          "quoteVolume24h": 340345237.170123,
-          "spread": 0.000004305528944892902,
+          "quoteVolume24h": 382752284.592605,
+          "spread": 0.000004333065405550344,
           "liquid": true,
           "monitoring": false
         },
@@ -123,7 +123,7 @@
     "BNBUSDT": {
       "github": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:38.912Z",
+        "fetchedAt": "2026-10-27T06:20:07.018Z",
         "sourceAt": null,
         "source": "https://github.com/bnb-chain/bsc",
         "data": {
@@ -135,27 +135,27 @@
       },
       "defillama": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:39.558Z",
+        "fetchedAt": "2026-10-27T06:20:07.743Z",
         "sourceAt": null,
         "source": "https://defillama.com/chain/bsc",
         "data": {
           "kind": "chain",
           "slug": "BSC",
-          "tvl": 5766791840.737277,
-          "fees24h": 412021,
+          "tvl": 5492673199.797392,
+          "fees24h": 408237,
           "revenue24h": null
         },
         "note": "Данные сети BSC, не бизнеса Binance. Выручка держателей не рассчитывается."
       },
       "binance": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:36.691Z",
-        "sourceAt": "2026-10-26T06:18:36.094Z",
+        "fetchedAt": "2026-10-27T06:20:04.168Z",
+        "sourceAt": "2026-10-27T06:20:03.034Z",
         "source": "https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints",
         "data": {
           "active": true,
-          "quoteVolume24h": 56252599.18346,
-          "spread": 0.00001349718921033467,
+          "quoteVolume24h": 78698141.64106,
+          "spread": 0.000013569717817859909,
           "liquid": true,
           "monitoring": false
         },
@@ -169,39 +169,39 @@
     "SOLUSDT": {
       "github": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:39.854Z",
+        "fetchedAt": "2026-10-27T06:20:08.080Z",
         "sourceAt": null,
         "source": "https://github.com/anza-xyz/agave",
         "data": {
           "repo": "anza-xyz/agave",
           "archived": false,
-          "pushedAt": "2026-10-26T05:59:31Z"
+          "pushedAt": "2026-10-27T05:59:03Z"
         },
         "note": "Клиент Agave."
       },
       "defillama": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:40.024Z",
+        "fetchedAt": "2026-10-27T06:20:08.269Z",
         "sourceAt": null,
         "source": "https://defillama.com/chain/solana",
         "data": {
           "kind": "chain",
           "slug": "Solana",
-          "tvl": 5714860249.349651,
-          "fees24h": 477322,
+          "tvl": 5714939920.434776,
+          "fees24h": 568346,
           "revenue24h": null
         },
         "note": " Выручка держателей не рассчитывается."
       },
       "binance": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:36.691Z",
-        "sourceAt": "2026-10-26T06:18:35.778Z",
+        "fetchedAt": "2026-10-27T06:20:04.168Z",
+        "sourceAt": "2026-10-27T06:20:03.684Z",
         "source": "https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints",
         "data": {
           "active": true,
-          "quoteVolume24h": 116239216.91534,
-          "spread": 0.00009879958504179337,
+          "quoteVolume24h": 156793305.44607,
+          "spread": 0.00010007505629227034,
           "liquid": true,
           "monitoring": false
         },
@@ -215,39 +215,39 @@
     "POLUSDT": {
       "github": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:40.261Z",
+        "fetchedAt": "2026-10-27T06:20:08.582Z",
         "sourceAt": null,
         "source": "https://github.com/0xPolygon/bor",
         "data": {
           "repo": "0xPolygon/bor",
           "archived": false,
-          "pushedAt": "2026-10-23T14:13:13Z"
+          "pushedAt": "2026-10-27T02:07:35Z"
         },
         "note": "Bor; не Heimdall и не весь AggLayer."
       },
       "defillama": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:40.438Z",
+        "fetchedAt": "2026-10-27T06:20:09.304Z",
         "sourceAt": null,
         "source": "https://defillama.com/chain/polygon",
         "data": {
           "kind": "chain",
           "slug": "Polygon",
-          "tvl": 690579365.7696191,
-          "fees24h": 86408,
+          "tvl": 687554866.1360177,
+          "fees24h": 71000,
           "revenue24h": null
         },
         "note": "Polygon PoS, не весь AggLayer. Выручка держателей не рассчитывается."
       },
       "binance": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:36.691Z",
-        "sourceAt": "2026-10-26T06:18:34.669Z",
+        "fetchedAt": "2026-10-27T06:20:04.168Z",
+        "sourceAt": "2026-10-27T06:20:01.511Z",
         "source": "https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints",
         "data": {
           "active": true,
-          "quoteVolume24h": 2026160.01125,
-          "spread": 0.0001125555743147743,
+          "quoteVolume24h": 2647879.363903,
+          "spread": 0.0001114019940956511,
           "liquid": true,
           "monitoring": false
         },
@@ -261,7 +261,7 @@
     "UNIUSDT": {
       "github": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:40.652Z",
+        "fetchedAt": "2026-10-27T06:20:09.592Z",
         "sourceAt": null,
         "source": "https://github.com/Uniswap/v4-core",
         "data": {
@@ -273,27 +273,27 @@
       },
       "defillama": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:40.864Z",
+        "fetchedAt": "2026-10-27T06:20:11.161Z",
         "sourceAt": null,
         "source": "https://defillama.com/protocol/uniswap",
         "data": {
           "kind": "protocol",
           "slug": "uniswap",
-          "tvl": 4055631672.716683,
-          "fees24h": 1350595.6099999999,
+          "tvl": 3728639076.0195646,
+          "fees24h": 2100611.44,
           "revenue24h": null
         },
         "note": " Выручка держателей не рассчитывается."
       },
       "binance": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:36.691Z",
-        "sourceAt": "2026-10-26T06:18:35.843Z",
+        "fetchedAt": "2026-10-27T06:20:04.168Z",
+        "sourceAt": "2026-10-27T06:20:03.925Z",
         "source": "https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints",
         "data": {
           "active": true,
-          "quoteVolume24h": 21485549.40849,
-          "spread": 0.00014340001434004932,
+          "quoteVolume24h": 26390950.16569,
+          "spread": 0.00014211610886098684,
           "liquid": true,
           "monitoring": false
         },
@@ -307,39 +307,39 @@
     "APTUSDT": {
       "github": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:41.108Z",
+        "fetchedAt": "2026-10-27T06:20:11.456Z",
         "sourceAt": null,
         "source": "https://github.com/aptos-labs/aptos-core",
         "data": {
           "repo": "aptos-labs/aptos-core",
           "archived": false,
-          "pushedAt": "2026-10-26T01:53:45Z"
+          "pushedAt": "2026-10-27T06:10:08Z"
         },
         "note": ""
       },
       "defillama": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:41.295Z",
+        "fetchedAt": "2026-10-27T06:20:12.139Z",
         "sourceAt": null,
         "source": "https://defillama.com/chain/aptos",
         "data": {
           "kind": "chain",
           "slug": "Aptos",
-          "tvl": 42557620.332859315,
-          "fees24h": 3226,
+          "tvl": 42422448.65758136,
+          "fees24h": 3878,
           "revenue24h": null
         },
         "note": " Выручка держателей не рассчитывается."
       },
       "binance": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:36.691Z",
-        "sourceAt": "2026-10-26T06:18:35.023Z",
+        "fetchedAt": "2026-10-27T06:20:04.168Z",
+        "sourceAt": "2026-10-27T06:20:01.093Z",
         "source": "https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints",
         "data": {
           "active": true,
-          "quoteVolume24h": 4120279.798665,
-          "spread": 0.0004323078031559593,
+          "quoteVolume24h": 4475565.10321,
+          "spread": 0.0001467028533704819,
           "liquid": true,
           "monitoring": false
         },
@@ -361,13 +361,13 @@
       },
       "binance": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:36.691Z",
-        "sourceAt": "2026-10-26T06:18:36.299Z",
+        "fetchedAt": "2026-10-27T06:20:04.168Z",
+        "sourceAt": "2026-10-27T06:20:03.296Z",
         "source": "https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints",
         "data": {
           "active": true,
-          "quoteVolume24h": 84994209.78468,
-          "spread": 0.00007756447547022609,
+          "quoteVolume24h": 91304453.16861,
+          "spread": 0.00007702676680145503,
           "liquid": true,
           "monitoring": false
         },
@@ -381,39 +381,39 @@
     "OPUSDT": {
       "github": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:41.712Z",
+        "fetchedAt": "2026-10-27T06:20:12.426Z",
         "sourceAt": null,
         "source": "https://github.com/ethereum-optimism/optimism",
         "data": {
           "repo": "ethereum-optimism/optimism",
           "archived": false,
-          "pushedAt": "2026-10-26T01:28:51Z"
+          "pushedAt": "2026-10-27T06:03:49Z"
         },
         "note": ""
       },
       "defillama": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:41.889Z",
+        "fetchedAt": "2026-10-27T06:20:13.142Z",
         "sourceAt": null,
         "source": "https://defillama.com/chain/op-mainnet",
         "data": {
           "kind": "chain",
           "slug": "OP Mainnet",
-          "tvl": 410939030.5550495,
-          "fees24h": 2137,
+          "tvl": 417519935.2995905,
+          "fees24h": 2460,
           "revenue24h": null
         },
         "note": "Только OP Mainnet, не вся Superchain. Газ оплачивается ETH. Выручка держателей не рассчитывается."
       },
       "binance": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:36.691Z",
-        "sourceAt": "2026-10-26T06:18:35.082Z",
+        "fetchedAt": "2026-10-27T06:20:04.168Z",
+        "sourceAt": "2026-10-27T06:20:02.984Z",
         "source": "https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints",
         "data": {
           "active": true,
-          "quoteVolume24h": 2433159.087339,
-          "spread": 0.0009053870529651686,
+          "quoteVolume24h": 3012410.022933,
+          "spread": 0.0009062075215224547,
           "liquid": true,
           "monitoring": false
         },
@@ -427,39 +427,39 @@
     "SUIUSDT": {
       "github": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:42.144Z",
+        "fetchedAt": "2026-10-27T06:20:13.439Z",
         "sourceAt": null,
         "source": "https://github.com/MystenLabs/sui",
         "data": {
           "repo": "MystenLabs/sui",
           "archived": false,
-          "pushedAt": "2026-10-26T03:53:55Z"
+          "pushedAt": "2026-10-27T05:32:43Z"
         },
         "note": ""
       },
       "defillama": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:42.314Z",
+        "fetchedAt": "2026-10-27T06:20:15.610Z",
         "sourceAt": null,
         "source": "https://defillama.com/chain/sui",
         "data": {
           "kind": "chain",
           "slug": "Sui",
-          "tvl": 468670558.74792373,
-          "fees24h": 2110,
+          "tvl": 469454669.90569437,
+          "fees24h": 2675,
           "revenue24h": null
         },
         "note": " Выручка держателей не рассчитывается."
       },
       "binance": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:36.691Z",
-        "sourceAt": "2026-10-26T06:18:36.232Z",
+        "fetchedAt": "2026-10-27T06:20:04.168Z",
+        "sourceAt": "2026-10-27T06:20:03.012Z",
         "source": "https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints",
         "data": {
           "active": true,
-          "quoteVolume24h": 30580552.88626,
-          "spread": 0.00010947506705346652,
+          "quoteVolume24h": 28963770.42077,
+          "spread": 0.00011017462678343964,
           "liquid": true,
           "monitoring": false
         },
@@ -481,7 +481,7 @@
       },
       "binance": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:37.537Z",
+        "fetchedAt": "2026-10-27T06:20:05.003Z",
         "sourceAt": null,
         "source": "https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints",
         "data": {
@@ -501,39 +501,39 @@
     "AAVEUSDT": {
       "github": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:42.572Z",
+        "fetchedAt": "2026-10-27T06:20:15.883Z",
         "sourceAt": null,
         "source": "https://github.com/aave/aave-v4",
         "data": {
           "repo": "aave/aave-v4",
           "archived": false,
-          "pushedAt": "2026-10-23T15:43:04Z"
+          "pushedAt": "2026-10-27T02:30:50Z"
         },
         "note": "Контракты V4, не все продукты Aave."
       },
       "defillama": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:42.783Z",
+        "fetchedAt": "2026-10-27T06:20:16.158Z",
         "sourceAt": null,
         "source": "https://defillama.com/protocol/aave",
         "data": {
           "kind": "protocol",
           "slug": "aave",
-          "tvl": 17570594179.694023,
-          "fees24h": 1156062,
+          "tvl": 17507206575.871017,
+          "fees24h": 1156883,
           "revenue24h": null
         },
         "note": " Выручка держателей не рассчитывается."
       },
       "binance": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:36.691Z",
-        "sourceAt": "2026-10-26T06:18:34.866Z",
+        "fetchedAt": "2026-10-27T06:20:04.168Z",
+        "sourceAt": "2026-10-27T06:20:03.004Z",
         "source": "https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints",
         "data": {
           "active": true,
-          "quoteVolume24h": 9671919.76879,
-          "spread": 0.00007407681765984596,
+          "quoteVolume24h": 15264261.69972,
+          "spread": 0.0000760658730459887,
           "liquid": true,
           "monitoring": false
         },
@@ -547,7 +547,7 @@
     "ARBUSDT": {
       "github": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:43.070Z",
+        "fetchedAt": "2026-10-27T06:20:16.398Z",
         "sourceAt": null,
         "source": "https://github.com/OffchainLabs/nitro",
         "data": {
@@ -559,27 +559,27 @@
       },
       "defillama": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:43.724Z",
+        "fetchedAt": "2026-10-27T06:20:17.218Z",
         "sourceAt": null,
         "source": "https://defillama.com/chain/arbitrum",
         "data": {
           "kind": "chain",
           "slug": "Arbitrum",
-          "tvl": 1459189212.914031,
-          "fees24h": 11403,
+          "tvl": 1496381889.1823869,
+          "fees24h": 21031,
           "revenue24h": null
         },
         "note": "Arbitrum One. Газ оплачивается ETH; это не доход держателя ARB. Выручка держателей не рассчитывается."
       },
       "binance": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:36.691Z",
-        "sourceAt": "2026-10-26T06:18:34.736Z",
+        "fetchedAt": "2026-10-27T06:20:04.168Z",
+        "sourceAt": "2026-10-27T06:20:02.538Z",
         "source": "https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints",
         "data": {
           "active": true,
-          "quoteVolume24h": 5500145.09437,
-          "spread": 0.0005918910920391639,
+          "quoteVolume24h": 7578684.29928,
+          "spread": 0.0005982650314088482,
           "liquid": true,
           "monitoring": false
         },
@@ -593,39 +593,39 @@
     "AVAXUSDT": {
       "github": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:43.948Z",
+        "fetchedAt": "2026-10-27T06:20:17.472Z",
         "sourceAt": null,
         "source": "https://github.com/ava-labs/avalanchego",
         "data": {
           "repo": "ava-labs/avalanchego",
           "archived": false,
-          "pushedAt": "2026-10-25T18:43:06Z"
+          "pushedAt": "2026-10-26T22:41:17Z"
         },
         "note": ""
       },
       "defillama": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:44.120Z",
+        "fetchedAt": "2026-10-27T06:20:20.773Z",
         "sourceAt": null,
         "source": "https://defillama.com/chain/avalanche",
         "data": {
           "kind": "chain",
           "slug": "Avalanche",
-          "tvl": 555029890.8774159,
-          "fees24h": 3939,
+          "tvl": 550331409.0360761,
+          "fees24h": 4889,
           "revenue24h": null
         },
         "note": " Выручка держателей не рассчитывается."
       },
       "binance": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:36.691Z",
-        "sourceAt": "2026-10-26T06:18:35.707Z",
+        "fetchedAt": "2026-10-27T06:20:04.168Z",
+        "sourceAt": "2026-10-27T06:20:04.067Z",
         "source": "https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints",
         "data": {
           "active": true,
-          "quoteVolume24h": 7959857.4936,
-          "spread": 0.00011277135607549432,
+          "quoteVolume24h": 10405151.84695,
+          "spread": 0.00011426612580714416,
           "liquid": true,
           "monitoring": false
         },
@@ -647,13 +647,13 @@
       },
       "binance": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:36.691Z",
-        "sourceAt": "2026-10-26T06:18:36.265Z",
+        "fetchedAt": "2026-10-27T06:20:04.168Z",
+        "sourceAt": "2026-10-27T06:19:59.045Z",
         "source": "https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints",
         "data": {
           "active": true,
-          "quoteVolume24h": 3080107.859761,
-          "spread": 0.0002832459991503881,
+          "quoteVolume24h": 4753869.176818,
+          "spread": 0.000141894288754862,
           "liquid": true,
           "monitoring": false
         },
@@ -667,39 +667,39 @@
     "LINKUSDT": {
       "github": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:44.347Z",
+        "fetchedAt": "2026-10-27T06:20:21.045Z",
         "sourceAt": null,
         "source": "https://github.com/smartcontractkit/chainlink",
         "data": {
           "repo": "smartcontractkit/chainlink",
           "archived": false,
-          "pushedAt": "2026-10-26T01:21:33Z"
+          "pushedAt": "2026-10-27T04:02:40Z"
         },
         "note": ""
       },
       "defillama": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:44.744Z",
+        "fetchedAt": "2026-10-27T06:20:21.810Z",
         "sourceAt": null,
         "source": "https://defillama.com/protocol/chainlink",
         "data": {
           "kind": "protocol",
           "slug": "chainlink",
-          "tvl": 1971313624.4298415,
-          "fees24h": 7747,
+          "tvl": 1995112076.4806597,
+          "fees24h": 3263,
           "revenue24h": null
         },
         "note": "TVL продуктов Chainlink, главным образом CCIP. Это не стоимость средств, защищаемых оракулами (TVS). Выручка держателей не рассчитывается."
       },
       "binance": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:36.691Z",
-        "sourceAt": "2026-10-26T06:18:36.438Z",
+        "fetchedAt": "2026-10-27T06:20:04.168Z",
+        "sourceAt": "2026-10-27T06:20:02.813Z",
         "source": "https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints",
         "data": {
           "active": true,
-          "quoteVolume24h": 13594214.20648,
-          "spread": 0.0000875158622499843,
+          "quoteVolume24h": 15579786.10362,
+          "spread": 0.00008817175858583273,
           "liquid": true,
           "monitoring": false
         },
@@ -713,7 +713,7 @@
     "ATOMUSDT": {
       "github": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:44.997Z",
+        "fetchedAt": "2026-10-27T06:20:22.089Z",
         "sourceAt": null,
         "source": "https://github.com/cosmos/gaia",
         "data": {
@@ -725,27 +725,27 @@
       },
       "defillama": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:45.179Z",
+        "fetchedAt": "2026-10-27T06:20:23.547Z",
         "sourceAt": null,
         "source": "https://defillama.com/chain/cosmoshub",
         "data": {
           "kind": "chain",
           "slug": "CosmosHub",
-          "tvl": 127781.64023180674,
-          "fees24h": 48.99,
+          "tvl": 127955.3744919193,
+          "fees24h": 70.87,
           "revenue24h": null
         },
         "note": "Только Cosmos Hub, не экосистема Cosmos/IBC и не объём стейкинга ATOM. Выручка держателей не рассчитывается."
       },
       "binance": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:36.691Z",
-        "sourceAt": "2026-10-26T06:18:30.263Z",
+        "fetchedAt": "2026-10-27T06:20:04.168Z",
+        "sourceAt": "2026-10-27T06:20:02.353Z",
         "source": "https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints",
         "data": {
           "active": true,
-          "quoteVolume24h": 1360786.56326,
-          "spread": 0.0006110601894287271,
+          "quoteVolume24h": 1486161.55861,
+          "spread": 0.0006133088009813627,
           "liquid": true,
           "monitoring": false
         },
@@ -759,7 +759,7 @@
     "PENDLEUSDT": {
       "github": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:45.393Z",
+        "fetchedAt": "2026-10-27T06:20:23.822Z",
         "sourceAt": null,
         "source": "https://github.com/pendle-finance/pendle-core-v2-public",
         "data": {
@@ -771,27 +771,27 @@
       },
       "defillama": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:46.219Z",
+        "fetchedAt": "2026-10-27T06:20:24.537Z",
         "sourceAt": null,
         "source": "https://defillama.com/protocol/pendle",
         "data": {
           "kind": "protocol",
           "slug": "pendle",
-          "tvl": 1071038009.637038,
-          "fees24h": 5915,
+          "tvl": 1086443059.7536733,
+          "fees24h": 19157,
           "revenue24h": null
         },
         "note": "Родительский протокол, включая Pendle V2 и Boros. Выручка держателей не рассчитывается."
       },
       "binance": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:36.691Z",
-        "sourceAt": "2026-10-26T06:18:36.267Z",
+        "fetchedAt": "2026-10-27T06:20:04.168Z",
+        "sourceAt": "2026-10-27T06:20:02.271Z",
         "source": "https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints",
         "data": {
           "active": true,
-          "quoteVolume24h": 2031865.1152,
-          "spread": 0.0005163955589982504,
+          "quoteVolume24h": 2013315.9331,
+          "spread": 0.000519076044640598,
           "liquid": true,
           "monitoring": false
         },
@@ -813,13 +813,13 @@
       },
       "binance": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:36.691Z",
-        "sourceAt": "2026-10-26T06:18:35.921Z",
+        "fetchedAt": "2026-10-27T06:20:04.168Z",
+        "sourceAt": "2026-10-27T06:20:04.038Z",
         "source": "https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints",
         "data": {
           "active": true,
-          "quoteVolume24h": 7760890.96538,
-          "spread": 0.00024737167594307725,
+          "quoteVolume24h": 8448125.74214,
+          "spread": 0.00024567006510267653,
           "liquid": true,
           "monitoring": false
         },
@@ -841,13 +841,13 @@
       },
       "binance": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:36.691Z",
-        "sourceAt": "2026-10-26T06:18:26.963Z",
+        "fetchedAt": "2026-10-27T06:20:04.168Z",
+        "sourceAt": "2026-10-27T06:20:01.045Z",
         "source": "https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints",
         "data": {
           "active": true,
-          "quoteVolume24h": 5687152.6782,
-          "spread": 0.0008107012565868584,
+          "quoteVolume24h": 7729763.02848,
+          "spread": 0.0008274720728176351,
           "liquid": true,
           "monitoring": false
         },
@@ -869,13 +869,13 @@
       },
       "binance": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:37.258Z",
-        "sourceAt": "2026-10-26T06:18:32.522Z",
+        "fetchedAt": "2026-10-27T06:20:04.744Z",
+        "sourceAt": "2026-10-27T06:20:00.242Z",
         "source": "https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints",
         "data": {
           "active": true,
-          "quoteVolume24h": 875920.68273,
-          "spread": 0.002902757619738834,
+          "quoteVolume24h": 708820.65556,
+          "spread": 0.0029197080291969613,
           "liquid": false,
           "monitoring": false
         },
@@ -889,7 +889,7 @@
     "FLUIDUSDT": {
       "github": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:46.463Z",
+        "fetchedAt": "2026-10-27T06:20:24.800Z",
         "sourceAt": null,
         "source": "https://github.com/Instadapp/fluid-contracts-public",
         "data": {
@@ -901,21 +901,21 @@
       },
       "defillama": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:46.829Z",
+        "fetchedAt": "2026-10-27T06:20:25.510Z",
         "sourceAt": null,
         "source": "https://defillama.com/protocol/fluid",
         "data": {
           "kind": "protocol",
           "slug": "fluid",
-          "tvl": 859184582.8692019,
-          "fees24h": 8197,
+          "tvl": 867297987.816659,
+          "fees24h": 14784,
           "revenue24h": null
         },
         "note": " Выручка держателей не рассчитывается."
       },
       "binance": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:37.537Z",
+        "fetchedAt": "2026-10-27T06:20:05.003Z",
         "sourceAt": null,
         "source": "https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints",
         "data": {
@@ -939,28 +939,28 @@
       },
       "defillama": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:47.198Z",
+        "fetchedAt": "2026-10-27T06:20:26.707Z",
         "sourceAt": null,
         "source": "https://defillama.com/protocol/maple-finance",
         "data": {
           "kind": "protocol",
           "slug": "maple-finance",
-          "tvl": 2636192358.316792,
-          "fees24h": 0,
+          "tvl": 2645120892.0287538,
+          "fees24h": 149707,
           "revenue24h": null
         },
         "note": "Родительский Maple Finance, включая Maple RWA. Выручка держателей не рассчитывается."
       },
       "binance": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:37.258Z",
-        "sourceAt": "2026-10-26T06:18:27.927Z",
+        "fetchedAt": "2026-10-27T06:20:04.744Z",
+        "sourceAt": "2026-10-27T06:20:02.273Z",
         "source": "https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints",
         "data": {
           "active": true,
-          "quoteVolume24h": 996697.57524,
-          "spread": 0.0011567379988431346,
-          "liquid": false,
+          "quoteVolume24h": 1010456.86739,
+          "spread": 0.0011574074074074405,
+          "liquid": true,
           "monitoring": false
         },
         "note": ""
@@ -973,7 +973,7 @@
     "STRKUSDT": {
       "github": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:47.448Z",
+        "fetchedAt": "2026-10-27T06:20:27.039Z",
         "sourceAt": null,
         "source": "https://github.com/starkware-libs/starknet-staking",
         "data": {
@@ -985,27 +985,27 @@
       },
       "defillama": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:47.626Z",
+        "fetchedAt": "2026-10-27T06:20:27.729Z",
         "sourceAt": null,
         "source": "https://defillama.com/chain/starknet",
         "data": {
           "kind": "chain",
           "slug": "Starknet",
-          "tvl": 40231892.300662,
-          "fees24h": 727,
+          "tvl": 40394494.1062827,
+          "fees24h": 989,
           "revenue24h": null
         },
         "note": " Выручка держателей не рассчитывается."
       },
       "binance": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:37.258Z",
-        "sourceAt": "2026-10-26T06:18:36.477Z",
+        "fetchedAt": "2026-10-27T06:20:04.744Z",
+        "sourceAt": "2026-10-27T06:20:04.138Z",
         "source": "https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints",
         "data": {
           "active": true,
-          "quoteVolume24h": 4365041.0287897,
-          "spread": 0.00022244466688917943,
+          "quoteVolume24h": 7011213.3500723,
+          "spread": 0.00021831677764427734,
           "liquid": true,
           "monitoring": false
         },
@@ -1027,7 +1027,7 @@
       },
       "binance": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:37.537Z",
+        "fetchedAt": "2026-10-27T06:20:05.003Z",
         "sourceAt": null,
         "source": "https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints",
         "data": {
@@ -1055,13 +1055,13 @@
       },
       "binance": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:37.258Z",
-        "sourceAt": "2026-10-26T06:18:35.819Z",
+        "fetchedAt": "2026-10-27T06:20:04.744Z",
+        "sourceAt": "2026-10-27T06:19:52.617Z",
         "source": "https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints",
         "data": {
           "active": true,
-          "quoteVolume24h": 179014.951179,
-          "spread": 0.0015079165619503517,
+          "quoteVolume24h": 225267.52839,
+          "spread": 0.0015678076822575793,
           "liquid": false,
           "monitoring": false
         },
@@ -1075,7 +1075,7 @@
     "PROVEUSDT": {
       "github": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:47.883Z",
+        "fetchedAt": "2026-10-27T06:20:28.003Z",
         "sourceAt": null,
         "source": "https://github.com/succinctlabs/network",
         "data": {
@@ -1091,13 +1091,13 @@
       },
       "binance": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:37.258Z",
-        "sourceAt": "2026-10-26T06:18:28.760Z",
+        "fetchedAt": "2026-10-27T06:20:04.744Z",
+        "sourceAt": "2026-10-27T06:19:57.367Z",
         "source": "https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints",
         "data": {
           "active": true,
-          "quoteVolume24h": 461534.27059,
-          "spread": 0.0011098779134294005,
+          "quoteVolume24h": 538107.5764,
+          "spread": 0.0010816657652785598,
           "liquid": false,
           "monitoring": false
         },
@@ -1119,13 +1119,13 @@
       },
       "binance": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:37.258Z",
-        "sourceAt": "2026-10-26T06:17:53.466Z",
+        "fetchedAt": "2026-10-27T06:20:04.744Z",
+        "sourceAt": "2026-10-27T06:19:57.594Z",
         "source": "https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints",
         "data": {
           "active": true,
-          "quoteVolume24h": 193357.2346,
-          "spread": 0.0014104372355429608,
+          "quoteVolume24h": 204155.905115,
+          "spread": 0.0028011204481792782,
           "liquid": false,
           "monitoring": false
         },
@@ -1147,13 +1147,13 @@
       },
       "binance": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:37.258Z",
-        "sourceAt": "2026-10-26T06:18:36.922Z",
+        "fetchedAt": "2026-10-27T06:20:04.744Z",
+        "sourceAt": "2026-10-27T06:20:03.925Z",
         "source": "https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints",
         "data": {
           "active": true,
-          "quoteVolume24h": 1453740.45699,
-          "spread": 0.00020783539436772442,
+          "quoteVolume24h": 1118692.10701,
+          "spread": 0.00020826824950542666,
           "liquid": true,
           "monitoring": false
         },
@@ -1175,13 +1175,13 @@
       },
       "binance": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:37.258Z",
-        "sourceAt": "2026-10-26T06:18:34.852Z",
+        "fetchedAt": "2026-10-27T06:20:04.744Z",
+        "sourceAt": "2026-10-27T06:20:03.804Z",
         "source": "https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints",
         "data": {
           "active": true,
-          "quoteVolume24h": 48651.05837,
-          "spread": 0.0010089120564991134,
+          "quoteVolume24h": 132426.33552,
+          "spread": 0.0010237160894045773,
           "liquid": false,
           "monitoring": false
         },
@@ -1203,7 +1203,7 @@
       },
       "binance": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:37.537Z",
+        "fetchedAt": "2026-10-27T06:20:05.003Z",
         "sourceAt": null,
         "source": "https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints",
         "data": {
@@ -1231,7 +1231,7 @@
       },
       "binance": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:37.537Z",
+        "fetchedAt": "2026-10-27T06:20:05.003Z",
         "sourceAt": null,
         "source": "https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints",
         "data": {
@@ -1259,13 +1259,13 @@
       },
       "binance": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:37.258Z",
-        "sourceAt": "2026-10-26T06:18:36.425Z",
+        "fetchedAt": "2026-10-27T06:20:04.744Z",
+        "sourceAt": "2026-10-27T06:20:04.247Z",
         "source": "https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints",
         "data": {
           "active": true,
-          "quoteVolume24h": 5566110.74024,
-          "spread": 0.0005719187875321074,
+          "quoteVolume24h": 7487151.29402,
+          "spread": 0.0005802146794313257,
           "liquid": true,
           "monitoring": false
         },
@@ -1287,13 +1287,13 @@
       },
       "binance": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:37.258Z",
-        "sourceAt": "2026-10-26T06:18:34.687Z",
+        "fetchedAt": "2026-10-27T06:20:04.744Z",
+        "sourceAt": "2026-10-27T06:20:00.741Z",
         "source": "https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints",
         "data": {
           "active": true,
-          "quoteVolume24h": 243103.1952648,
-          "spread": 0.0015058981008951695,
+          "quoteVolume24h": 150490.0812003,
+          "spread": 0.0008343763037129984,
           "liquid": false,
           "monitoring": false
         },
@@ -1315,7 +1315,7 @@
       },
       "binance": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:37.537Z",
+        "fetchedAt": "2026-10-27T06:20:05.003Z",
         "sourceAt": null,
         "source": "https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints",
         "data": {
@@ -1343,7 +1343,7 @@
       },
       "binance": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:37.537Z",
+        "fetchedAt": "2026-10-27T06:20:05.003Z",
         "sourceAt": null,
         "source": "https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints",
         "data": {
@@ -1371,14 +1371,14 @@
       },
       "binance": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:37.258Z",
-        "sourceAt": "2026-10-26T06:18:28.386Z",
+        "fetchedAt": "2026-10-27T06:20:04.744Z",
+        "sourceAt": "2026-10-27T06:20:04.372Z",
         "source": "https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints",
         "data": {
           "active": true,
-          "quoteVolume24h": 738644.8001944,
-          "spread": 0.00029846291598259933,
-          "liquid": false,
+          "quoteVolume24h": 1815075.1597163,
+          "spread": 0.00046645417087777324,
+          "liquid": true,
           "monitoring": false
         },
         "note": ""
@@ -1399,13 +1399,13 @@
       },
       "binance": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:37.258Z",
-        "sourceAt": "2026-10-26T06:18:36.373Z",
+        "fetchedAt": "2026-10-27T06:20:04.744Z",
+        "sourceAt": "2026-10-27T06:20:02.880Z",
         "source": "https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints",
         "data": {
           "active": true,
-          "quoteVolume24h": 1539147.83998,
-          "spread": 0.00016224547740729942,
+          "quoteVolume24h": 1599976.17675,
+          "spread": 0.0003262642740619542,
           "liquid": true,
           "monitoring": false
         },
@@ -1427,13 +1427,13 @@
       },
       "binance": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:37.258Z",
-        "sourceAt": "2026-10-26T06:18:34.704Z",
+        "fetchedAt": "2026-10-27T06:20:04.744Z",
+        "sourceAt": "2026-10-27T06:20:04.659Z",
         "source": "https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints",
         "data": {
           "active": true,
-          "quoteVolume24h": 112644.68484,
-          "spread": 0.003231017770597813,
+          "quoteVolume24h": 162237.67668,
+          "spread": 0.003284072249589421,
           "liquid": false,
           "monitoring": false
         },
@@ -1455,13 +1455,13 @@
       },
       "binance": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:37.258Z",
-        "sourceAt": "2026-10-26T06:18:36.571Z",
+        "fetchedAt": "2026-10-27T06:20:04.744Z",
+        "sourceAt": "2026-10-27T06:20:04.162Z",
         "source": "https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints",
         "data": {
           "active": true,
-          "quoteVolume24h": 33835068.581173,
-          "spread": 0.00047766897539999514,
+          "quoteVolume24h": 41596043.791261,
+          "spread": 0.00048227634434525675,
           "liquid": true,
           "monitoring": false
         },
@@ -1483,13 +1483,13 @@
       },
       "binance": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:37.258Z",
-        "sourceAt": "2026-10-26T06:18:24.445Z",
+        "fetchedAt": "2026-10-27T06:20:04.744Z",
+        "sourceAt": "2026-10-27T06:20:03.351Z",
         "source": "https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints",
         "data": {
           "active": true,
-          "quoteVolume24h": 3018130.773207,
-          "spread": 0.002617801047120341,
+          "quoteVolume24h": 2907402.996238,
+          "spread": 0.002531645569620315,
           "liquid": true,
           "monitoring": false
         },
@@ -1511,13 +1511,13 @@
       },
       "binance": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:37.258Z",
-        "sourceAt": "2026-10-26T06:18:30.931Z",
+        "fetchedAt": "2026-10-27T06:20:04.744Z",
+        "sourceAt": "2026-10-27T06:20:01.477Z",
         "source": "https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints",
         "data": {
           "active": true,
-          "quoteVolume24h": 177077.08816,
-          "spread": 0.001131861912846665,
+          "quoteVolume24h": 283991.90362,
+          "spread": 0.00229885057471255,
           "liquid": false,
           "monitoring": false
         },
@@ -1539,13 +1539,13 @@
       },
       "binance": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:37.258Z",
-        "sourceAt": "2026-10-26T06:18:36.439Z",
+        "fetchedAt": "2026-10-27T06:20:04.744Z",
+        "sourceAt": "2026-10-27T06:20:01.410Z",
         "source": "https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints",
         "data": {
           "active": true,
-          "quoteVolume24h": 4241163.18925,
-          "spread": 0.0003855793329477116,
+          "quoteVolume24h": 4627347.10422,
+          "spread": 0.0007733952049498158,
           "liquid": true,
           "monitoring": false
         },
@@ -1567,7 +1567,7 @@
       },
       "binance": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:37.537Z",
+        "fetchedAt": "2026-10-27T06:20:05.003Z",
         "sourceAt": null,
         "source": "https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints",
         "data": {
@@ -1595,13 +1595,13 @@
       },
       "binance": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:37.258Z",
-        "sourceAt": "2026-10-26T06:18:33.987Z",
+        "fetchedAt": "2026-10-27T06:20:04.744Z",
+        "sourceAt": "2026-10-27T06:20:03.215Z",
         "source": "https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints",
         "data": {
           "active": true,
-          "quoteVolume24h": 2148033.03851,
-          "spread": 0.00047766897539999525,
+          "quoteVolume24h": 2983651.72376,
+          "spread": 0.0004711425206126426,
           "liquid": true,
           "monitoring": false
         },
@@ -1623,13 +1623,13 @@
       },
       "binance": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:37.258Z",
-        "sourceAt": "2026-10-26T06:18:36.376Z",
+        "fetchedAt": "2026-10-27T06:20:04.744Z",
+        "sourceAt": "2026-10-27T06:20:02.319Z",
         "source": "https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints",
         "data": {
           "active": true,
-          "quoteVolume24h": 3926848.432056,
-          "spread": 0.00027137042062404677,
+          "quoteVolume24h": 3375114.126842,
+          "spread": 0.0002744237102084556,
           "liquid": true,
           "monitoring": false
         },
@@ -1651,13 +1651,13 @@
       },
       "binance": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:37.258Z",
-        "sourceAt": "2026-10-26T06:18:35.685Z",
+        "fetchedAt": "2026-10-27T06:20:04.744Z",
+        "sourceAt": "2026-10-27T06:20:03.550Z",
         "source": "https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints",
         "data": {
           "active": true,
-          "quoteVolume24h": 15006386.12073,
-          "spread": 0.00013048868010706748,
+          "quoteVolume24h": 18706281.02404,
+          "spread": 0.00012897401173670106,
           "liquid": true,
           "monitoring": false
         },
@@ -1679,13 +1679,13 @@
       },
       "binance": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:37.397Z",
-        "sourceAt": "2026-10-26T06:18:37.052Z",
+        "fetchedAt": "2026-10-27T06:20:04.873Z",
+        "sourceAt": "2026-10-27T06:20:01.055Z",
         "source": "https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints",
         "data": {
           "active": true,
-          "quoteVolume24h": 1511813.903217,
-          "spread": 0.0005496015388842484,
+          "quoteVolume24h": 1546903.687013,
+          "spread": 0.0005500550055006421,
           "liquid": true,
           "monitoring": false
         },
@@ -1707,7 +1707,7 @@
       },
       "binance": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:37.537Z",
+        "fetchedAt": "2026-10-27T06:20:05.003Z",
         "sourceAt": null,
         "source": "https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints",
         "data": {
@@ -1735,7 +1735,7 @@
       },
       "binance": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:37.537Z",
+        "fetchedAt": "2026-10-27T06:20:05.003Z",
         "sourceAt": null,
         "source": "https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints",
         "data": {
@@ -1763,7 +1763,7 @@
       },
       "binance": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:37.537Z",
+        "fetchedAt": "2026-10-27T06:20:05.003Z",
         "sourceAt": null,
         "source": "https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints",
         "data": {
@@ -1791,7 +1791,7 @@
       },
       "binance": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:37.537Z",
+        "fetchedAt": "2026-10-27T06:20:05.003Z",
         "sourceAt": null,
         "source": "https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints",
         "data": {
@@ -1819,12 +1819,12 @@
       },
       "binance": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:37.397Z",
-        "sourceAt": "2026-10-26T06:18:36.396Z",
+        "fetchedAt": "2026-10-27T06:20:04.873Z",
+        "sourceAt": "2026-10-27T06:20:00.606Z",
         "source": "https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints",
         "data": {
           "active": true,
-          "quoteVolume24h": 621256.49259,
+          "quoteVolume24h": 525778.17675,
           "spread": 0.0015588464536243896,
           "liquid": false,
           "monitoring": false
@@ -1839,7 +1839,7 @@
     "BERAUSDT": {
       "github": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:48.120Z",
+        "fetchedAt": "2026-10-27T06:20:28.268Z",
         "sourceAt": null,
         "source": "https://github.com/berachain/contracts",
         "data": {
@@ -1855,14 +1855,14 @@
       },
       "binance": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:37.397Z",
-        "sourceAt": "2026-10-26T06:18:34.664Z",
+        "fetchedAt": "2026-10-27T06:20:04.873Z",
+        "sourceAt": "2026-10-27T06:20:00.651Z",
         "source": "https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints",
         "data": {
           "active": true,
-          "quoteVolume24h": 1341721.9883176,
-          "spread": 0.0013280212483400113,
-          "liquid": true,
+          "quoteVolume24h": 736277.8112232,
+          "spread": 0.0013368983957219634,
+          "liquid": false,
           "monitoring": false
         },
         "note": ""
@@ -1883,7 +1883,7 @@
       },
       "binance": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:37.537Z",
+        "fetchedAt": "2026-10-27T06:20:05.003Z",
         "sourceAt": null,
         "source": "https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints",
         "data": {
@@ -1911,13 +1911,13 @@
       },
       "binance": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:37.397Z",
-        "sourceAt": "2026-10-26T06:18:34.100Z",
+        "fetchedAt": "2026-10-27T06:20:04.873Z",
+        "sourceAt": "2026-10-27T06:20:04.357Z",
         "source": "https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints",
         "data": {
           "active": true,
-          "quoteVolume24h": 1826575.710594,
-          "spread": 0.0016992353440952355,
+          "quoteVolume24h": 1951448.262472,
+          "spread": 0.0008113590263692762,
           "liquid": true,
           "monitoring": false
         },
@@ -1939,13 +1939,13 @@
       },
       "binance": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:37.397Z",
-        "sourceAt": "2026-10-26T06:18:32.635Z",
+        "fetchedAt": "2026-10-27T06:20:04.873Z",
+        "sourceAt": "2026-10-27T06:19:56.255Z",
         "source": "https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints",
         "data": {
           "active": true,
-          "quoteVolume24h": 226625.75273,
-          "spread": 0.0012586532410321315,
+          "quoteVolume24h": 118715.64701,
+          "spread": 0.0024968789013731815,
           "liquid": false,
           "monitoring": false
         },
@@ -1967,13 +1967,13 @@
       },
       "binance": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:37.397Z",
-        "sourceAt": "2026-10-26T06:18:36.896Z",
+        "fetchedAt": "2026-10-27T06:20:04.873Z",
+        "sourceAt": "2026-10-27T06:19:58.184Z",
         "source": "https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints",
         "data": {
           "active": true,
-          "quoteVolume24h": 121031.7154,
-          "spread": 0.00242718446601942,
+          "quoteVolume24h": 117291.003,
+          "spread": 0.0012217470983506425,
           "liquid": false,
           "monitoring": false
         },
@@ -1995,13 +1995,13 @@
       },
       "binance": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:37.397Z",
-        "sourceAt": "2026-10-26T06:18:32.376Z",
+        "fetchedAt": "2026-10-27T06:20:04.873Z",
+        "sourceAt": "2026-10-27T06:20:04.085Z",
         "source": "https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints",
         "data": {
           "active": true,
-          "quoteVolume24h": 192665.9379049,
-          "spread": 0.002095118374188238,
+          "quoteVolume24h": 240246.8806358,
+          "spread": 0.00209073803052469,
           "liquid": false,
           "monitoring": false
         },
@@ -2023,7 +2023,7 @@
       },
       "binance": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:37.537Z",
+        "fetchedAt": "2026-10-27T06:20:05.003Z",
         "sourceAt": null,
         "source": "https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints",
         "data": {
@@ -2051,7 +2051,7 @@
       },
       "binance": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:37.537Z",
+        "fetchedAt": "2026-10-27T06:20:05.003Z",
         "sourceAt": null,
         "source": "https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints",
         "data": {
@@ -2079,7 +2079,7 @@
       },
       "binance": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:37.537Z",
+        "fetchedAt": "2026-10-27T06:20:05.003Z",
         "sourceAt": null,
         "source": "https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints",
         "data": {
@@ -2107,7 +2107,7 @@
       },
       "binance": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:37.537Z",
+        "fetchedAt": "2026-10-27T06:20:05.003Z",
         "sourceAt": null,
         "source": "https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints",
         "data": {
@@ -2135,7 +2135,7 @@
       },
       "binance": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:37.537Z",
+        "fetchedAt": "2026-10-27T06:20:05.003Z",
         "sourceAt": null,
         "source": "https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints",
         "data": {
@@ -2163,13 +2163,13 @@
       },
       "binance": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:37.397Z",
-        "sourceAt": "2026-10-26T06:18:36.499Z",
+        "fetchedAt": "2026-10-27T06:20:04.873Z",
+        "sourceAt": "2026-10-27T06:20:03.493Z",
         "source": "https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints",
         "data": {
           "active": true,
-          "quoteVolume24h": 612707.40196,
-          "spread": 0.0016116035455278463,
+          "quoteVolume24h": 655633.28277,
+          "spread": 0.0015735641227380467,
           "liquid": false,
           "monitoring": false
         },
@@ -2183,7 +2183,7 @@
     "MORPHOUSDT": {
       "github": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:48.376Z",
+        "fetchedAt": "2026-10-27T06:20:28.584Z",
         "sourceAt": null,
         "source": "https://github.com/morpho-org/morpho-blue",
         "data": {
@@ -2199,14 +2199,14 @@
       },
       "binance": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:37.397Z",
-        "sourceAt": "2026-10-26T06:18:34.695Z",
+        "fetchedAt": "2026-10-27T06:20:04.873Z",
+        "sourceAt": "2026-10-27T06:20:04.296Z",
         "source": "https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints",
         "data": {
           "active": true,
-          "quoteVolume24h": 958714.82931,
-          "spread": 0.0004954173891505247,
-          "liquid": false,
+          "quoteVolume24h": 1598425.11664,
+          "spread": 0.0009208103130756096,
+          "liquid": true,
           "monitoring": false
         },
         "note": ""
@@ -2227,14 +2227,14 @@
       },
       "binance": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:37.397Z",
-        "sourceAt": "2026-10-26T06:18:27.958Z",
+        "fetchedAt": "2026-10-27T06:20:04.873Z",
+        "sourceAt": "2026-10-27T06:20:02.510Z",
         "source": "https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints",
         "data": {
           "active": true,
-          "quoteVolume24h": 439734.805997,
-          "spread": 0.00048484848484846516,
-          "liquid": false,
+          "quoteVolume24h": 2111323.178251,
+          "spread": 0.00132304299889741,
+          "liquid": true,
           "monitoring": false
         },
         "note": ""
@@ -2255,14 +2255,14 @@
       },
       "binance": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:37.397Z",
-        "sourceAt": "2026-10-26T06:18:36.384Z",
+        "fetchedAt": "2026-10-27T06:20:04.873Z",
+        "sourceAt": "2026-10-27T06:20:04.431Z",
         "source": "https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints",
         "data": {
           "active": true,
-          "quoteVolume24h": 804918.8744,
-          "spread": 0.0013531799729364395,
-          "liquid": false,
+          "quoteVolume24h": 2348504.9003,
+          "spread": 0.0006772773450727328,
+          "liquid": true,
           "monitoring": false
         },
         "note": ""
@@ -2283,13 +2283,13 @@
       },
       "binance": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:37.397Z",
-        "sourceAt": "2026-10-26T06:18:36.531Z",
+        "fetchedAt": "2026-10-27T06:20:04.873Z",
+        "sourceAt": "2026-10-27T06:20:03.244Z",
         "source": "https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints",
         "data": {
           "active": true,
-          "quoteVolume24h": 8796144.034004,
-          "spread": 0.0011888250445810282,
+          "quoteVolume24h": 2794648.042874,
+          "spread": 0.0007892659826362531,
           "liquid": true,
           "monitoring": true
         },
@@ -2311,13 +2311,13 @@
       },
       "binance": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:37.397Z",
-        "sourceAt": "2026-10-26T06:18:22.720Z",
+        "fetchedAt": "2026-10-27T06:20:04.873Z",
+        "sourceAt": "2026-10-27T06:19:58.354Z",
         "source": "https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints",
         "data": {
           "active": true,
-          "quoteVolume24h": 1043380.9888627,
-          "spread": 0.00105764145954524,
+          "quoteVolume24h": 1234024.4519425,
+          "spread": 0.0010095911155980977,
           "liquid": true,
           "monitoring": false
         },
@@ -2339,7 +2339,7 @@
       },
       "binance": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:37.537Z",
+        "fetchedAt": "2026-10-27T06:20:05.003Z",
         "sourceAt": null,
         "source": "https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints",
         "data": {
@@ -2367,13 +2367,13 @@
       },
       "binance": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:37.397Z",
-        "sourceAt": "2026-10-26T06:18:36.933Z",
+        "fetchedAt": "2026-10-27T06:20:04.873Z",
+        "sourceAt": "2026-10-27T06:20:01.985Z",
         "source": "https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints",
         "data": {
           "active": true,
-          "quoteVolume24h": 268127.8904,
-          "spread": 0.0006966213862766109,
+          "quoteVolume24h": 313136.2854,
+          "spread": 0.0006854792642523078,
           "liquid": false,
           "monitoring": false
         },
@@ -2395,13 +2395,13 @@
       },
       "binance": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:37.397Z",
-        "sourceAt": "2026-10-26T06:18:29.929Z",
+        "fetchedAt": "2026-10-27T06:20:04.873Z",
+        "sourceAt": "2026-10-27T06:20:03.959Z",
         "source": "https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints",
         "data": {
           "active": true,
-          "quoteVolume24h": 1479890.21312739,
-          "spread": 0.0020639834881320753,
+          "quoteVolume24h": 1825708.25652694,
+          "spread": 0.002068252326783848,
           "liquid": true,
           "monitoring": false
         },
@@ -2415,13 +2415,13 @@
     "NEARUSDT": {
       "github": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:48.608Z",
+        "fetchedAt": "2026-10-27T06:20:28.847Z",
         "sourceAt": null,
         "source": "https://github.com/near/nearcore",
         "data": {
           "repo": "near/nearcore",
           "archived": false,
-          "pushedAt": "2026-10-24T04:14:47Z"
+          "pushedAt": "2026-10-27T02:26:14Z"
         },
         "note": ""
       },
@@ -2431,13 +2431,13 @@
       },
       "binance": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:37.397Z",
-        "sourceAt": "2026-10-26T06:18:37.065Z",
+        "fetchedAt": "2026-10-27T06:20:04.873Z",
+        "sourceAt": "2026-10-27T06:20:04.002Z",
         "source": "https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints",
         "data": {
           "active": true,
-          "quoteVolume24h": 80154405.8133,
-          "spread": 0.0002229405863336185,
+          "quoteVolume24h": 89476858.1873,
+          "spread": 0.00022642363862774727,
           "liquid": true,
           "monitoring": false
         },
@@ -2459,13 +2459,13 @@
       },
       "binance": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:37.397Z",
-        "sourceAt": "2026-10-26T06:18:30.664Z",
+        "fetchedAt": "2026-10-27T06:20:04.873Z",
+        "sourceAt": "2026-10-27T06:19:52.868Z",
         "source": "https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints",
         "data": {
           "active": true,
-          "quoteVolume24h": 224117.459317,
-          "spread": 0.0021574973031284234,
+          "quoteVolume24h": 254995.520913,
+          "spread": 0.0021621621621620976,
           "liquid": false,
           "monitoring": false
         },
@@ -2487,14 +2487,14 @@
       },
       "binance": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:37.397Z",
-        "sourceAt": "2026-10-26T06:18:12.636Z",
+        "fetchedAt": "2026-10-27T06:20:04.873Z",
+        "sourceAt": "2026-10-27T06:20:03.809Z",
         "source": "https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints",
         "data": {
           "active": true,
-          "quoteVolume24h": 3099462.799261,
-          "spread": 0.002478314745972852,
-          "liquid": true,
+          "quoteVolume24h": 381983.182798,
+          "spread": 0.0049382716049382845,
+          "liquid": false,
           "monitoring": false
         },
         "note": ""
@@ -2515,13 +2515,13 @@
       },
       "binance": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:37.397Z",
-        "sourceAt": "2026-10-26T06:18:36.455Z",
+        "fetchedAt": "2026-10-27T06:20:04.873Z",
+        "sourceAt": "2026-10-27T06:20:03.932Z",
         "source": "https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints",
         "data": {
           "active": true,
-          "quoteVolume24h": 568887.503138,
-          "spread": 0.0005768676088838378,
+          "quoteVolume24h": 936515.339697,
+          "spread": 0.0005853087503657687,
           "liquid": false,
           "monitoring": false
         },
@@ -2543,13 +2543,13 @@
       },
       "binance": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:37.397Z",
-        "sourceAt": "2026-10-26T06:18:37.163Z",
+        "fetchedAt": "2026-10-27T06:20:04.873Z",
+        "sourceAt": "2026-10-27T06:19:59.230Z",
         "source": "https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints",
         "data": {
           "active": true,
-          "quoteVolume24h": 3310732.70392,
-          "spread": 0.0018885741265343898,
+          "quoteVolume24h": 2977310.89608,
+          "spread": 0.0018993352326684885,
           "liquid": true,
           "monitoring": false
         },
@@ -2571,13 +2571,13 @@
       },
       "binance": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:37.536Z",
-        "sourceAt": "2026-10-26T06:18:29.503Z",
+        "fetchedAt": "2026-10-27T06:20:05.003Z",
+        "sourceAt": "2026-10-27T06:20:04.240Z",
         "source": "https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints",
         "data": {
           "active": true,
-          "quoteVolume24h": 461375.09147,
-          "spread": 0.004246284501061545,
+          "quoteVolume24h": 8437303.65221,
+          "spread": 0.0035523978685612573,
           "liquid": false,
           "monitoring": false
         },
@@ -2599,13 +2599,13 @@
       },
       "binance": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:37.536Z",
-        "sourceAt": "2026-10-26T06:18:12.540Z",
+        "fetchedAt": "2026-10-27T06:20:05.003Z",
+        "sourceAt": "2026-10-27T06:20:02.032Z",
         "source": "https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints",
         "data": {
           "active": true,
-          "quoteVolume24h": 668657.4393932,
-          "spread": 0.0008105698305910129,
+          "quoteVolume24h": 776077.3949988,
+          "spread": 0.0006404098623118258,
           "liquid": false,
           "monitoring": false
         },
@@ -2627,14 +2627,14 @@
       },
       "binance": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:37.536Z",
-        "sourceAt": "2026-10-26T06:18:34.118Z",
+        "fetchedAt": "2026-10-27T06:20:05.003Z",
+        "sourceAt": "2026-10-27T06:19:59.498Z",
         "source": "https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints",
         "data": {
           "active": true,
-          "quoteVolume24h": 814040.21917,
-          "spread": 0.005988023952095772,
-          "liquid": false,
+          "quoteVolume24h": 2437257.94599,
+          "spread": 0.0026143790849673955,
+          "liquid": true,
           "monitoring": false
         },
         "note": ""
@@ -2655,13 +2655,13 @@
       },
       "binance": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:37.536Z",
-        "sourceAt": "2026-10-26T06:18:33.824Z",
+        "fetchedAt": "2026-10-27T06:20:05.003Z",
+        "sourceAt": "2026-10-27T06:20:00.840Z",
         "source": "https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints",
         "data": {
           "active": true,
-          "quoteVolume24h": 313779.124254,
-          "spread": 0.0014440433212997053,
+          "quoteVolume24h": 158943.240335,
+          "spread": 0.0014566642388930023,
           "liquid": false,
           "monitoring": false
         },
@@ -2683,7 +2683,7 @@
       },
       "binance": {
         "status": "ok",
-        "fetchedAt": "2026-10-26T06:18:37.537Z",
+        "fetchedAt": "2026-10-27T06:20:05.003Z",
         "sourceAt": null,
         "source": "https://developers.binance.com/docs/binance-spot-api-docs/rest-api/market-data-endpoints",
         "data": {
